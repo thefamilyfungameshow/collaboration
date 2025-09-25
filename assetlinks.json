@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.mimsexpo.MIMS",
+    "sha256_cert_fingerprints": ["C3:68:9E:79:1A:F3:F5:5B:E4:67:4D:F2:FA:74:AE:32:CF:8B:93:83:70:92:96:DE:6C:4A:E2:AF:68:E6:49:86"]
+  }
+}]
