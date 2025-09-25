@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIMS Invitation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007AFF;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- Replace with your actual app logo URL -->
+        <img src="https://placehold.co/100x100/007AFF/FFFFFF?text=MIMS" alt="MIMS App Logo" class="logo">
+        <h1>Opening MIMS...</h1>
+        <p>You've been invited to collaborate. We're redirecting you now.</p>
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        function redirect() {
+            // --- CONFIGURATION ---
+            const APP_SCHEME = 'mims';
+            const APP_STORE_URL = 'https://apps.apple.com/us/app/your-app-name/idYOUR_APP_ID'; // Replace with your real App Store URL
+            const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.mimsexpo.MIMS'; // Your Play Store URL
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+
+            if (!token) {
+                console.error("No token found in URL");
+                document.querySelector('p').textContent = 'This invitation link is invalid or has expired.';
+                document.querySelector('.spinner').style.display = 'none';
+                return;
+            }
+
+            const deepLink = `${APP_SCHEME}://collection/invite/${token}`;
+
+            // Try to open the app
+            window.location.href = deepLink;
+
+            // This timer is the fallback. If the app isn't installed, the redirect
+            // will fail silently. After a short delay, we send the user to the store.
+            setTimeout(() => {
+                if (/(android)/i.test(navigator.userAgent)) {
+                    window.location.href = PLAY_STORE_URL;
+                } else if (/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
+                    window.location.href = APP_STORE_URL;
+                }
+            }, 800); // 800ms delay
+        }
+
+        window.onload = redirect;
+    </script>
+
+</body>
+</html>
+
