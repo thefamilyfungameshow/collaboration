@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "com.mimsexpo.MIMS",
       "sha256_cert_fingerprints": [
-        "8B:DC:24:55:45:7E:21:01:49:6B:A7:CF:07:5E:2E:07:41:9C:D0:1F:23:06:66:82:73:9D:5B:AA:26:F1:E4:37"
+        "8B:DC:24:55:45:7E:21:01:49:6B:A7:CF:07:5E:2E:07:41:9C:D0:1F:23:06:66:82:73:9D:5B:AA:26:F1:E4:37",
+        "C3:68:9E:79:1A:F3:F5:5B:E4:67:4D:F2:FA:74:AE:32:CF:8B:93:83:70:92:96:DE:6C:4A:E2:AF:68:E6:49:86"
       ]
     }
   }
